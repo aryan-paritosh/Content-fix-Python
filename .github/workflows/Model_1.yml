@@ -1,0 +1,10 @@
+replace_list = ["Ò","Ó",".","Õ","Ò","Ó","@ ","@. @. @","@\"","couldn't","can't","I'm","It's",]
+to_be_replaced_list = ["\"","\"",". @", "\'", "\"", "\"", "@", "", "\"", "could not", "cannot", "I am", "It is"]
+
+def amira_upgra():
+    x=input("Enter the story:")
+    for i in range(len(replace_list)):
+        x=x.replace(replace_list[i], to_be_replaced_list[i])
+    print(x)
+
+amira_upgra()
