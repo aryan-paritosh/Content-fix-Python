@@ -1,10 +1,23 @@
-replace_list = ["Ò","Ó",".","Õ","Ò","Ó","@ ","@. @. @","@\"","couldn't","can't","I'm","It's",]
-to_be_replaced_list = ["\"","\"",". @", "\'", "\"", "\"", "@", "", "\"", "could not", "cannot", "I am", "It is"]
+name: Run Script
 
-def amira_upgra():
-    x=input("Enter the story:")
-    for i in range(len(replace_list)):
-        x=x.replace(replace_list[i], to_be_replaced_list[i])
-    print(x)
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
-amira_upgra()
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - uses: jannekem/run-python-script-action@v1
+        with:
+          script: |
+            import os
+            print("Directory contents:")
+            for f in os.listdir():
+                print(f)
